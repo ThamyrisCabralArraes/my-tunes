@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Album } from './components/Album';
 import { Favorites } from './components/Favorites';
@@ -14,7 +13,6 @@ function App() {
         path='/'
         element={<Home />}
       />
-
       <Route
         path='/search'
         element={<Search />}

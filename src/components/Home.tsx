@@ -1,5 +1,7 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import UserContext from '../context/UserContext';
+import { User } from '../Header/User';
 
 import './css/home.css';
 
@@ -18,15 +20,28 @@ export const Home = () => {
     setNameLogin(target.value);
   };
 
+  const { setUser } = useContext(UserContext);
+
   const handleClick = (e: any): void => {
     e.preventDefault();
     saveUser(nameLogin);
+    setUser(nameLogin);
     navigate('/search');
   };
 
   const saveUser = (user: string | null) => {
     localStorage.setItem('user', JSON.stringify(user));
   };
+
+  const readUser = (): string | null => {
+    const user = localStorage.getItem('user');
+    if (user === null) {
+      return null;
+    }
+    return JSON.parse(user);
+  };
+
+  const user = readUser();
 
   return (
     <div className='input-login'>
@@ -48,6 +63,7 @@ export const Home = () => {
       >
         Entrar
       </button>
+      <br />
     </div>
   );
 };
