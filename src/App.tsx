@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import './App.css';
 import { Album } from './components/Album';
 import { Favorites } from './components/Favorites';
 import { Home } from './components/Home';
