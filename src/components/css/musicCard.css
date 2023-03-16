@@ -1,0 +1,21 @@
+.musics-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: #ccc 0px 0px 15px 0px;
+}
+
+.music-item {
+  margin: 20px;
+}
+
+.label-favorita {
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}

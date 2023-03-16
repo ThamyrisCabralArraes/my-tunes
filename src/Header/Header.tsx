@@ -9,8 +9,8 @@ export const Header = () => {
   return (
     <>
       <div className='header'>
-        <h1>My Tunes</h1>
-        <p>{user}</p>
+        <h1 className='title-header'>My Tunes</h1>
+        <h3 className='bem-vindo'>Bem Vindo(a) {user}</h3>
       </div>
       <div className='links'>
         <Link

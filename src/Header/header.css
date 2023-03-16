@@ -9,9 +9,9 @@
   background-color: #47185f;
   height: 170px;
   color: #fff;
-  text-align: center;
-  text-shadow: 0.1em 0.2em #333;
-  padding: 50px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .links {
@@ -31,4 +31,14 @@
 
 .classe-link:hover {
   background-color: #46278f8f;
+}
+
+.bem-vindo {
+  font-size: 22px;
+  margin: 20px;
+  text-shadow: 0.1em 0.2em black;
+}
+
+.title-header {
+  text-shadow: 0.1em 0.2em black;
 }
