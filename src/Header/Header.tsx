@@ -30,7 +30,7 @@ export const Header = () => {
         <Link
           className='classe-link'
           style={{ textDecoration: 'none', color: 'white' }}
-          to='/profile/edit'
+          to='/profile'
         >
           Edit Profile
         </Link>
