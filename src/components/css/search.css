@@ -26,7 +26,12 @@
 
 .album {
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  margin: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: #ccc 0px 0px 15px 0px;
 }
 
 .title-album {

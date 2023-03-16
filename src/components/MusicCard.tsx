@@ -1,25 +1,45 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 import './css/musicCard.css';
 
 type MusicCardProps = {
-  key: number;
   trackName: string;
   previewUrl: string;
   trackId: number;
-  artworkUrl100: string;
 };
 
 export const MusicCard = ({
-  key,
   trackName,
   previewUrl,
   trackId,
-  artworkUrl100,
 }: MusicCardProps) => {
   const [favorite, setFavorite] = useState(false);
 
+  useEffect(() => {
+    const music = { trackName, previewUrl, trackId };
+    if (favorite) {
+      saveFavoriteSongs(music);
+    } else {
+      removeFavoriteSongs(music);
+    }
+  }, [favorite]);
+
   const handleChange = () => {
     setFavorite(!favorite);
+  };
+
+  const saveFavoriteSongs = (music: MusicCardProps) => {
+    const favoriteSongs = JSON.parse(localStorage.getItem('user') || '[]');
+    favoriteSongs.push(music);
+    localStorage.setItem('user', JSON.stringify(favoriteSongs));
+  };
+
+  const removeFavoriteSongs = (music: MusicCardProps) => {
+    const favoriteSongs = JSON.parse(localStorage.getItem('user') || '[]');
+    const newFavoriteSongs = favoriteSongs.filter(
+      (item: MusicCardProps) => item.trackId !== music.trackId,
+    );
+    localStorage.setItem('user', JSON.stringify(newFavoriteSongs));
   };
 
   return (
@@ -28,14 +48,19 @@ export const MusicCard = ({
         className='label-favorita'
         htmlFor='favorite'
       >
-        Favorita
-        <input
-          type='checkbox'
-          name='favorite'
-          checked={favorite}
-          onChange={handleChange}
-          data-testid={`checkbox-music-${trackId}`}
-        />
+        {favorite ? (
+          <AiFillHeart
+            name='favorite'
+            className='icon-favorite'
+            onClick={handleChange}
+          />
+        ) : (
+          <AiOutlineHeart
+            name='favorite'
+            className='icon-favorite'
+            onClick={handleChange}
+          />
+        )}
       </label>
       <h3 className='music-item'>{trackName}</h3>
       <audio

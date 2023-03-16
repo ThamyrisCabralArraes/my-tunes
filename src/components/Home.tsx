@@ -24,24 +24,9 @@ export const Home = () => {
 
   const handleClick = (e: any): void => {
     e.preventDefault();
-    saveUser(nameLogin);
     setUser(nameLogin);
     navigate('/search');
   };
-
-  const saveUser = (user: string | null) => {
-    localStorage.setItem('user', JSON.stringify(user));
-  };
-
-  const readUser = (): string | null => {
-    const user = localStorage.getItem('user');
-    if (user === null) {
-      return null;
-    }
-    return JSON.parse(user);
-  };
-
-  const user = readUser();
 
   return (
     <div className='input-login'>
