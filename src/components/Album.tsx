@@ -33,7 +33,6 @@ export const Album = () => {
             trackName={music.trackName}
             previewUrl={music.previewUrl}
             trackId={music.trackId}
-            artworkUrl100={music.artworkUrl100}
           />
         </div>
       ))}

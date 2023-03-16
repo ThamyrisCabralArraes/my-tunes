@@ -2,36 +2,36 @@ import { useEffect, useState } from 'react';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 import './css/musicCard.css';
 
-type MusicCardProps = {
+export type MusicCardProps = {
   trackName: string;
   previewUrl: string;
   trackId: number;
+  savedFavorite?: boolean;
 };
 
 export const MusicCard = ({
   trackName,
   previewUrl,
   trackId,
+  savedFavorite,
 }: MusicCardProps) => {
-  const [favorite, setFavorite] = useState(false);
+  const [favorite, setFavorite] = useState(savedFavorite || false);
 
   useEffect(() => {
-    const music = { trackName, previewUrl, trackId };
-    if (favorite) {
-      saveFavoriteSongs(music);
-    } else {
-      removeFavoriteSongs(music);
+    const favoriteSongs = JSON.parse(localStorage.getItem('user') || '[]');
+    const newFavoriteSongs = favoriteSongs.filter(
+      (item: MusicCardProps) => item.trackId === trackId,
+    );
+    if (newFavoriteSongs.length > 0) {
+      setFavorite(true);
     }
-  }, [favorite]);
-
-  const handleChange = () => {
-    setFavorite(!favorite);
-  };
+  }, []);
 
   const saveFavoriteSongs = (music: MusicCardProps) => {
     const favoriteSongs = JSON.parse(localStorage.getItem('user') || '[]');
     favoriteSongs.push(music);
     localStorage.setItem('user', JSON.stringify(favoriteSongs));
+    setFavorite(true);
   };
 
   const removeFavoriteSongs = (music: MusicCardProps) => {
@@ -40,6 +40,7 @@ export const MusicCard = ({
       (item: MusicCardProps) => item.trackId !== music.trackId,
     );
     localStorage.setItem('user', JSON.stringify(newFavoriteSongs));
+    setFavorite(false);
   };
 
   return (
@@ -48,17 +49,21 @@ export const MusicCard = ({
         className='label-favorita'
         htmlFor='favorite'
       >
-        {favorite ? (
+        {favorite || savedFavorite ? (
           <AiFillHeart
             name='favorite'
             className='icon-favorite'
-            onClick={handleChange}
+            onClick={() =>
+              removeFavoriteSongs({ trackName, previewUrl, trackId })
+            }
           />
         ) : (
           <AiOutlineHeart
             name='favorite'
             className='icon-favorite'
-            onClick={handleChange}
+            onClick={() =>
+              saveFavoriteSongs({ trackName, previewUrl, trackId })
+            }
           />
         )}
       </label>
