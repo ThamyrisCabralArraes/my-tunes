@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import UserContext from '../context/UserContext';
 import './header.css';
-import { User } from './User';
 
 export const Header = () => {
   const { user } = useContext(UserContext);
@@ -27,13 +26,7 @@ export const Header = () => {
         >
           Search
         </Link>
-        <Link
-          className='classe-link'
-          style={{ textDecoration: 'none', color: 'white' }}
-          to='/profile'
-        >
-          Profile
-        </Link>
+
         <Link
           className='classe-link'
           style={{ textDecoration: 'none', color: 'white' }}

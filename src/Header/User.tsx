@@ -8,5 +8,3 @@ interface UserProps {
 export const User = ({ user, setUser }: UserProps) => {
   return <div>{user}</div>;
 };
-
-// style={{ color: 'white' }}

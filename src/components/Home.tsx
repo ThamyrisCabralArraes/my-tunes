@@ -1,7 +1,6 @@
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import UserContext from '../context/UserContext';
-import { User } from '../Header/User';
 
 import './css/home.css';
 
