@@ -31,3 +31,17 @@
   background-color: #47185f;
   color: #fff;
 }
+
+.div-profile {
+  width: 20%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 3rem;
+}
+
+.div-profile img {
+  border-radius: 30%;
+  border: 10px solid #47185f;
+}
