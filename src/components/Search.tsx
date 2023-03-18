@@ -41,12 +41,12 @@ export const Search = () => {
 
   return (
     <>
-      <div className='input-search'>
+      <section className='flex justify-center mt-8 gap-2'>
         <label htmlFor='search'>
           <input
             className='input input-bordered input-primary w-full max-w-xs'
             type='text'
-            placeholder='pesquise seu album'
+            placeholder='Pesquise seu album/artista'
             name='search'
             id='search'
             value={search}
@@ -59,7 +59,7 @@ export const Search = () => {
         >
           Buscar
         </button>
-      </div>
+      </section>
       <br />
       <h1 className='title-album'>{albumName}</h1>
       <div className='albums'>

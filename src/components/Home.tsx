@@ -26,7 +26,7 @@ export const Home = () => {
   };
 
   return (
-    <section>
+    <section className='flex justify-center mt-8 gap-2'>
       <label htmlFor='nameLogin'>
         <input
           className='input input-bordered input-primary w-full max-w-xs'
