@@ -84,7 +84,7 @@ export const Search = () => {
                 data-testid={`link-to-album-${album.collectionId}`}
               >
                 {' '}
-                click to album
+                Go to album
               </Link>
             </div>
           </div>

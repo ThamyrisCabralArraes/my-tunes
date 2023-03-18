@@ -25,17 +25,15 @@ export const Album = () => {
   }, []);
 
   return (
-    <div>
+    <section className='flex flex-col justify-center items-center gap-2 mt-8'>
       {musics.map((music: any) => (
-        <div key={music.trackId}>
-          <MusicCard
-            key={music.trackId}
-            trackName={music.trackName}
-            previewUrl={music.previewUrl}
-            trackId={music.trackId}
-          />
-        </div>
+        <MusicCard
+          key={music.trackId}
+          trackName={music.trackName}
+          previewUrl={music.previewUrl}
+          trackId={music.trackId}
+        />
       ))}
-    </div>
+    </section>
   );
 };

@@ -43,38 +43,39 @@ export const MusicCard = ({
   };
 
   return (
-    <div className='musics-list'>
-      <label
-        className='label-favorita'
-        htmlFor='favorite'
-      >
-        {favorite || savedFavorite ? (
-          <AiFillHeart
-            name='favorite'
-            className='icon-favorite'
-            onClick={() =>
-              removeFavoriteSongs({ trackName, previewUrl, trackId })
-            }
-          />
-        ) : (
-          <AiOutlineHeart
-            name='favorite'
-            className='icon-favorite'
-            onClick={() =>
-              saveFavoriteSongs({ trackName, previewUrl, trackId })
-            }
-          />
-        )}
-      </label>
-      <h3 className='music-item'>{trackName}</h3>
-      <audio
-        data-testid='audio-component'
-        src={previewUrl}
-        controls
-      >
-        <track kind='captions' />O seu navegador não suporta o elemento
-        <code>audio</code>
-      </audio>
+    <div className='card w-96 bg-base-100 shadow-xl'>
+      <div className='card-body'>
+        <div className='flex justify-between'>
+          <h3 className='font-bold text-neutral'>{trackName}</h3>
+          <label htmlFor='favorite'>
+            {favorite || savedFavorite ? (
+              <AiFillHeart
+                name='favorite'
+                className='text-2xl text-red-600'
+                onClick={() =>
+                  removeFavoriteSongs({ trackName, previewUrl, trackId })
+                }
+              />
+            ) : (
+              <AiOutlineHeart
+                name='favorite'
+                className='text-2xl text-red-600'
+                onClick={() =>
+                  saveFavoriteSongs({ trackName, previewUrl, trackId })
+                }
+              />
+            )}
+          </label>
+        </div>
+        <audio
+          className='w-full mt-4'
+          src={previewUrl}
+          controls
+        >
+          <track kind='captions' />O seu navegador não suporta o elemento
+          <code>audio</code>
+        </audio>
+      </div>
     </div>
   );
 };
