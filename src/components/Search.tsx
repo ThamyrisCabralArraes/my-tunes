@@ -39,6 +39,7 @@ export const Search = () => {
     setAlbums(response);
   };
 
+  console.log(albums);
   return (
     <>
       <section className='flex justify-center mt-8 gap-2'>
@@ -61,23 +62,31 @@ export const Search = () => {
         </button>
       </section>
       <br />
-      <h1 className='title-album'>{albumName}</h1>
-      <div className='albums'>
+      <div className='flex flex-wrap gap-2 justify-center'>
         {albums.map((album) => (
           <div
-            className='album'
+            className='card w-96 bg-base-100 shadow-xl image-full'
             key={album.collectionId}
           >
-            <h3 className='album-collection'>{album.collectionName} -</h3>
-            <p>{album.artistName}</p>
-            <Link
-              className='link-to-album'
-              to={`/album/${album.collectionId}`}
-              data-testid={`link-to-album-${album.collectionId}`}
-            >
-              {' '}
-              click to album
-            </Link>
+            <figure>
+              <img
+                className='w-full'
+                src={album.artworkUrl100}
+                alt='album'
+              />
+            </figure>
+            <div className='card-body'>
+              <h3 className='card-title'>{album.collectionName}</h3>
+              <p>{album.artistName}</p>
+              <Link
+                className='btn btn-primary'
+                to={`/album/${album.collectionId}`}
+                data-testid={`link-to-album-${album.collectionId}`}
+              >
+                {' '}
+                click to album
+              </Link>
+            </div>
           </div>
         ))}
       </div>
