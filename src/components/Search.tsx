@@ -44,7 +44,7 @@ export const Search = () => {
       <div className='input-search'>
         <label htmlFor='search'>
           <input
-            className='input-login'
+            className='input input-bordered input-primary w-full max-w-xs'
             type='text'
             placeholder='pesquise seu album'
             name='search'
@@ -54,10 +54,10 @@ export const Search = () => {
           />
         </label>
         <button
-          className='button-search'
+          className='btn btn-primary'
           onClick={handleClick}
         >
-          Entrar
+          Buscar
         </button>
       </div>
       <br />

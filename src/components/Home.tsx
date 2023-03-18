@@ -26,12 +26,12 @@ export const Home = () => {
   };
 
   return (
-    <div className='input-login'>
+    <section>
       <label htmlFor='nameLogin'>
         <input
-          className='input-login'
+          className='input input-bordered input-primary w-full max-w-xs'
           type='text'
-          placeholder='digite seu nome'
+          placeholder='Digite seu nome'
           name='nameLogin'
           id='nameLogin'
           value={nameLogin}
@@ -39,13 +39,13 @@ export const Home = () => {
         />
       </label>
       <button
-        className='button-login'
+        className='btn btn-primary'
         disabled={disable}
         onClick={handleClick}
       >
         Entrar
       </button>
       <br />
-    </div>
+    </section>
   );
 };
