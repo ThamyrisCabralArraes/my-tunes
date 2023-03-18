@@ -10,18 +10,16 @@ export const Favorites = () => {
   }, []);
 
   return (
-    <div>
+    <section className='flex flex-col justify-center items-center gap-2 mt-8'>
       {favoriteSongs.map((music: any) => (
-        <div key={music.trackId}>
-          <MusicCard
-            key={music.trackId}
-            trackName={music.trackName}
-            previewUrl={music.previewUrl}
-            trackId={music.trackId}
-            savedFavorite={music.savedFavorite}
-          />
-        </div>
+        <MusicCard
+          key={music.trackId}
+          trackName={music.trackName}
+          previewUrl={music.previewUrl}
+          trackId={music.trackId}
+          savedFavorite={music.savedFavorite}
+        />
       ))}
-    </div>
+    </section>
   );
 };
