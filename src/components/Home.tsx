@@ -8,19 +8,19 @@ export const Home = () => {
 
   const navigate = useNavigate();
 
-  const handleChange = ({ target }: any): void => {
-    if (target.value.length > 1) {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    if (value.length > 1) {
       setDisable(false);
     } else {
       setDisable(true);
     }
-    setNameLogin(target.value);
+    setNameLogin(value);
   };
 
   const { setUser } = useContext(UserContext);
 
-  const handleClick = (e: any): void => {
-    e.preventDefault();
+  const handleClick = (): void => {
     setUser(nameLogin);
     navigate('/search');
   };

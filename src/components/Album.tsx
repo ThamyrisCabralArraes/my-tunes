@@ -2,11 +2,17 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { MusicCard } from './MusicCard';
 
+type Music = {
+  trackId: number;
+  trackName: string;
+  previewUrl: string;
+};
+
 export const Album = () => {
   const [musics, setMusics] = useState<any>([]);
   let { id } = useParams();
 
-  const getMusics = async (id: any) => {
+  const getMusics = async (id: string | undefined) => {
     const request = await fetch(
       `https://itunes.apple.com/lookup?id=${id}&entity=song`,
     );
@@ -26,7 +32,7 @@ export const Album = () => {
 
   return (
     <section className='flex flex-col justify-center items-center gap-2 mt-8'>
-      {musics.map((music: any) => (
+      {musics.map((music: Music) => (
         <MusicCard
           key={music.trackId}
           trackName={music.trackName}

@@ -28,12 +28,11 @@ export const Search = () => {
     return results;
   };
 
-  const handleChange = ({ target }: any): void => {
-    setSearch(target.value);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value);
   };
 
-  const handleClick = async (e: any) => {
-    e.preventDefault();
+  const handleClick = async () => {
     setAlbumName('Albuns encontrados:');
     const response = await searchAlbumsAPI(search);
     setAlbums(response);

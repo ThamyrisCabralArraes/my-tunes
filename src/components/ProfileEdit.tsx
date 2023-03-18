@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { FormEventHandler, useContext, useEffect, useState } from 'react';
 import UserContext from '../context/UserContext';
 
 export const ProfileEdit = () => {
@@ -12,7 +12,7 @@ export const ProfileEdit = () => {
     recoverProfile();
   }, []);
 
-  const handleChange = (event: any) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     if (name === 'nameEdit') {
       setNameEdit(value);
@@ -23,7 +23,8 @@ export const ProfileEdit = () => {
     }
   };
 
-  const handleprofileSave = () => {
+  const handleprofileSave: FormEventHandler = (e) => {
+    e.preventDefault();
     const profile = {
       name: nameEdit,
       email: emailEdit,
@@ -41,12 +42,15 @@ export const ProfileEdit = () => {
   };
 
   return (
-    <>
-      <div className='div-edite-profile'>
+    <section className='flex justify-center gap-2'>
+      <form
+        onSubmit={handleprofileSave}
+        className='flex flex-col justify-center mt-8 gap-2'
+      >
         <label htmlFor='nameEdit'>
           Nome
           <input
-            className='input-profile'
+            className='input input-bordered input-primary w-full max-w-xs'
             type='text'
             placeholder='digite seu nome'
             name='nameEdit'
@@ -59,7 +63,7 @@ export const ProfileEdit = () => {
         <label htmlFor='emailEdit'>
           Email
           <input
-            className='input-profile'
+            className='input input-bordered input-primary w-full max-w-xs'
             type='text'
             placeholder='digite seu email'
             name='emailEdit'
@@ -72,7 +76,7 @@ export const ProfileEdit = () => {
         <label htmlFor='pictureEdit'>
           Foto
           <input
-            className='input-profile'
+            className='input input-bordered input-primary w-full max-w-xs'
             type='text'
             placeholder='url da sua foto'
             name='pictureEdit'
@@ -83,21 +87,22 @@ export const ProfileEdit = () => {
         </label>
 
         <button
-          className='button-profile'
-          onClick={handleprofileSave}
+          className='btn btn-primary max-w-xs'
+          type='submit'
         >
           Salvar
         </button>
-      </div>
+      </form>
 
-      <div className='div-profile'>
+      <div className='m-3'>
         <img
+          className='rounded-full shadow-2xl max-w-xs'
           src={pictureEdit}
           alt='image'
         />
-        <h2>Nome: {nameEdit}</h2>
-        <h2>Email: {emailEdit} </h2>
+        <h2 className='shadow-lg p-2'>Nome: {nameEdit}</h2>
+        <h2 className='shadow-lg p-2'>Email: {emailEdit} </h2>
       </div>
-    </>
+    </section>
   );
 };

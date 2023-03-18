@@ -11,7 +11,7 @@ export const Favorites = () => {
 
   return (
     <section className='flex flex-col justify-center items-center gap-2 mt-8'>
-      {favoriteSongs.map((music: any) => (
+      {favoriteSongs.map((music: MusicCardProps) => (
         <MusicCard
           key={music.trackId}
           trackName={music.trackName}
