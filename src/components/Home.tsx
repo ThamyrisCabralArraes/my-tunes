@@ -2,8 +2,6 @@ import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import UserContext from '../context/UserContext';
 
-import './css/home.css';
-
 export const Home = () => {
   const [nameLogin, setNameLogin] = useState<string>('');
   const [disable, setDisable] = useState<boolean>(true);

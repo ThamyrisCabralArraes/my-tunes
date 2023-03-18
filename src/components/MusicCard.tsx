@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
-import './css/musicCard.css';
 
 export type MusicCardProps = {
   trackName: string;

@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
 import UserContext from '../context/UserContext';
-import './css/profileEdit.css';
 
 export const ProfileEdit = () => {
   const [nameEdit, setNameEdit] = useState('');
