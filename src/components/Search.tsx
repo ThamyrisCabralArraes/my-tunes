@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './css/search.css';
 
 type SearchProps = {
   artistId: number;
@@ -29,25 +28,25 @@ export const Search = () => {
     return results;
   };
 
-  const handleChange = ({ target }: any): void => {
-    setSearch(target.value);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value);
   };
 
-  const handleClick = async (e: any) => {
-    e.preventDefault();
+  const handleClick = async () => {
     setAlbumName('Albuns encontrados:');
     const response = await searchAlbumsAPI(search);
     setAlbums(response);
   };
 
+  console.log(albums);
   return (
     <>
-      <div className='input-search'>
+      <section className='flex justify-center mt-8 gap-2'>
         <label htmlFor='search'>
           <input
-            className='input-login'
+            className='input input-bordered input-primary w-full max-w-xs'
             type='text'
-            placeholder='pesquise seu album'
+            placeholder='Pesquise seu album/artista'
             name='search'
             id='search'
             value={search}
@@ -55,30 +54,38 @@ export const Search = () => {
           />
         </label>
         <button
-          className='button-search'
+          className='btn btn-primary'
           onClick={handleClick}
         >
-          Entrar
+          Buscar
         </button>
-      </div>
+      </section>
       <br />
-      <h1 className='title-album'>{albumName}</h1>
-      <div className='albums'>
+      <div className='flex flex-wrap gap-2 justify-center'>
         {albums.map((album) => (
           <div
-            className='album'
+            className='card w-96 bg-base-100 shadow-xl image-full'
             key={album.collectionId}
           >
-            <h3 className='album-collection'>{album.collectionName} -</h3>
-            <p>{album.artistName}</p>
-            <Link
-              className='link-to-album'
-              to={`/album/${album.collectionId}`}
-              data-testid={`link-to-album-${album.collectionId}`}
-            >
-              {' '}
-              click to album
-            </Link>
+            <figure>
+              <img
+                className='w-full'
+                src={album.artworkUrl100}
+                alt='album'
+              />
+            </figure>
+            <div className='card-body'>
+              <h3 className='card-title'>{album.collectionName}</h3>
+              <p>{album.artistName}</p>
+              <Link
+                className='btn btn-primary'
+                to={`/album/${album.collectionId}`}
+                data-testid={`link-to-album-${album.collectionId}`}
+              >
+                {' '}
+                Go to album
+              </Link>
+            </div>
           </div>
         ))}
       </div>
