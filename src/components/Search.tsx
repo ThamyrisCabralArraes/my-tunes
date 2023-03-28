@@ -25,6 +25,7 @@ export const Search = () => {
     const APIResponse = await fetch(getAlbumsAPI);
 
     const { results } = await APIResponse.json();
+    console.log(results);
     return results;
   };
 
@@ -46,6 +47,7 @@ export const Search = () => {
           <input
             className='input input-bordered input-primary w-full max-w-xs'
             type='text'
+            data-testid='input-pesquisa'
             placeholder='Pesquise seu album/artista'
             name='search'
             id='search'
@@ -55,6 +57,7 @@ export const Search = () => {
         </label>
         <button
           className='btn btn-primary'
+          type='button'
           onClick={handleClick}
         >
           Buscar
