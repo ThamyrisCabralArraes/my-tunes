@@ -31,6 +31,7 @@ export const Home = () => {
         <input
           className='input input-bordered input-primary w-full max-w-xs'
           type='text'
+          data-testid='input-login'
           placeholder='Digite seu nome'
           name='nameLogin'
           id='nameLogin'
