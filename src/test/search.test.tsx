@@ -60,13 +60,16 @@ describe('testes do Header', () => {
     expect(inputDigiteSeuNome).toBeInTheDocument();
 
     const botaoEntrar = screen.getByRole('button', { name: /entrar/i });
+    expect(botaoEntrar).toBeDisabled();
     expect(botaoEntrar).toBeInTheDocument();
 
-    userEvent.type(inputDigiteSeuNome, 'teste');
-    userEvent.click(botaoEntrar);
+    await userEvent.type(inputDigiteSeuNome, 'teste');
 
-    const btnBuscar = await screen.findByRole('button', { name: /buscar/i });
-    expect(btnBuscar).toBeInTheDocument();
+    expect(botaoEntrar).toBeEnabled();
+
+    await userEvent.click(botaoEntrar);
+
+    expect(inputDigiteSeuNome).not.toBeInTheDocument();
   });
 
   it('verificar digitar um nome e apertar no botao vai para pagina search', async () => {
@@ -98,6 +101,8 @@ describe('testes do Header', () => {
         ],
       }),
     });
+
+    expect(global.fetch).toBeCalledTimes(0);
 
     const containarDasMusicas = await screen.findAllByText(/Go to album/i);
     expect(containarDasMusicas[0]).toBeInTheDocument();
